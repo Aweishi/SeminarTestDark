@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrendForce Seminar — New York 2026</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- GSAP Core + Plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/DrawSVGPlugin.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Instrument Serif', 'serif'],
+            sans: ['Space Grotesk', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="asset/css/style.css">
+</head>
+
+<body>
+
+  <!-- ══════════ NAV ══════════ -->
+  <nav id="main-nav">
+    <a href="#hero" class="nav-logo">
+      <img src="asset/img/TF-logo.svg" alt="TrendForce" style="height:40px; opacity:1;">
+    </a>
+    <!-- Desktop links -->
+    <div class="nav-desktop">
+      <a href="#overview" class="nav-link draw-nav-link" data-draw-line>Overview<div data-draw-line-box
+          class="draw-nav-box"></div></a>
+      <a href="#agenda" class="nav-link draw-nav-link" data-draw-line>Agenda<div data-draw-line-box
+          class="draw-nav-box"></div></a>
+      <a href="#speakers" class="nav-link draw-nav-link" data-draw-line>Speakers<div data-draw-line-box
+          class="draw-nav-box"></div></a>
+      <a href="#registration" class="nav-link draw-nav-link" data-draw-line>Registration<div data-draw-line-box
+          class="draw-nav-box"></div></a>
+      <a href="#about" class="nav-link draw-nav-link" data-draw-line>Location<div data-draw-line-box
+          class="draw-nav-box"></div></a>
+      <a href="#contact" class="nav-link draw-nav-link" data-draw-line>Contact<div data-draw-line-box
+          class="draw-nav-box"></div></a>
+      <a href="#registration" class="nav-cta">Register</a>
+    </div>
+    <!-- Hamburger (mobile only) -->
+    <button id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu overlay -->
+  <div id="mobile-menu" aria-hidden="true">
+    <div id="mobile-menu-inner">
+      <a href="#overview" class="mobile-nav-link" data-mobile-link>Overview</a>
+      <a href="#agenda" class="mobile-nav-link" data-mobile-link>Agenda</a>
+      <a href="#speakers" class="mobile-nav-link" data-mobile-link>Speakers</a>
+      <a href="#registration" class="mobile-nav-link" data-mobile-link>Registration</a>
+      <a href="#about" class="mobile-nav-link" data-mobile-link>Location</a>
+      <a href="#contact" class="mobile-nav-link" data-mobile-link>Contact</a>
+    </div>
+  </div>
+
+
+  <!-- ══════════ HERO ══════════ -->
+  <section id="hero">
+    <div id="hero-bg"></div>
+    <div id="hero-overlay"></div>
+    <div id="hero-content">
+      <img id="hero-svg" src="asset/img/HeroSection_Text-13.svg" alt="TrendForce Seminar">
+    </div>
+    <div id="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+    <!-- Pixelated wipe on scroll out -->
+    <div data-rows="20" data-shutter-scroll-transition="" data-rows-tablet="10" data-rows-mobile="6"
+      class="shutter-scroll-transition"></div>
+  </section>
+
+
+  <!-- ══════════ OVERVIEW ══════════ -->
+  <div class="full-rule"></div>
+  <section class="section-wrap" id="overview">
+    <div style="position:relative;">
+      <div class="section-num">01</div>
+      <p class="section-eyebrow">Overview</p>
+      <h2 class="section-heading" id="overview-heading" data-highlight-marker-reveal data-marker-direction="right"
+        data-marker-theme="#c9a96e">Overview</h2>
+    </div>
+    <div class="section-rule"></div>
+    <p id="overview-body" data-highlight-text data-highlight-scroll-start="top 88%"
+      data-highlight-scroll-end="center 35%" data-highlight-fade="0.15" data-highlight-stagger="0.08">
+      As AI moves toward accelerated expansion in 2026, this seminar explores deep industrial shifts across memory and
+      foundry. Key topics include the structural capacity gap in DRAM/NAND, the strategic dominance of HBM, the dual
+      realities of the foundry market, and the diversification of AI servers. This session provides critical insights
+      for navigating the 2026–2028 supercycle and capturing emerging market opportunities.
+    </p>
+  </section>
+
+
+  <!-- ══════════ ABOUT ══════════ -->
+  <div class="full-rule"></div>
+  <section class="section-wrap" id="about">
+    <div style="position:relative;">
+      <div class="section-num">02</div>
+      <p class="section-eyebrow">About the Seminar</p>
+      <h2 class="section-heading" data-highlight-marker-reveal data-marker-direction="right"
+        data-marker-theme="#c9a96e">About</h2>
+    </div>
+    <div class="section-rule"></div>
+
+
+    <div class="about-grid">
+      <div class="about-cell   ">
+        <p class="about-label">Date</p>
+        <p class="about-value">May 12, 2026</p>
+      </div>
+      <div class="about-cell ">
+        <p class="about-label">Time</p>
+        <p class="about-value">14:00 – 16:00</p>
+        <p class="about-sub">Check-in begins at 13:30</p>
+      </div>
+      <div class="about-cell">
+        <p class="about-label">Language</p>
+        <p class="about-value">English</p>
+      </div>
+      <div class="about-cell">
+        <p class="about-label">Locate</p>
+        <p class="about-value">Concourse G, Concourse Level</p>
+        <p class="about-sub">New York Hilton Midtown 1335 Avenue of the Americas New York, NY 10019, USA</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════ AGENDA ══════════ -->
+  <div class="full-rule"></div>
+  <section class="section-wrap" id="agenda">
+    <div style="position:relative;">
+      <div class="section-num">03</div>
+      <p class="section-eyebrow">Program</p>
+      <h2 class="section-heading" data-highlight-marker-reveal data-marker-direction="right"
+        data-marker-theme="#c9a96e">Agenda</h2>
+    </div>
+    <div class="section-rule"></div>
+
+    <p class="agenda-note">* The Agenda is preliminary and subject to change without notice.</p>
+
+    <div class="agenda-table" id="agenda-table" data-directional-hover="" data-type="y">
+      <div class="agenda-row is-header">
+        <div>Time</div>
+        <div>Topic</div>
+
+      </div>
+      <div class="agenda-row" data-directional-hover-item="">
+        <div data-directional-hover-tile=""></div>
+        <div class="agenda-time">13:00 – 14:00</div>
+        <div class="agenda-topic">Registration</div>
+
+      </div>
+      <div class="agenda-row" data-directional-hover-item="">
+        <div data-directional-hover-tile=""></div>
+        <div class="agenda-time">14:00 – 14:20</div>
+        <div class="agenda-topic">The Memory Supercycle 2026–2028: Bridging the Structural Gap from Consumer to AI
+          Dominance
+
+          <div class="agenda-speaker-info">
+            <div class="agenda-speaker">Avril Wu</div>
+            <div class="agenda-title">TrendForce Senior Research Vice President</div>
+          </div>
+
+
+        </div>
+
+      </div>
+      <div class="agenda-row" data-directional-hover-item="">
+        <div data-directional-hover-tile=""></div>
+        <div class="agenda-time">14:20 – 14:40</div>
+        <div class="agenda-topic">NAND Flash Demand Projections in the Era of AI Inference
+          <div class="agenda-speaker-info">
+            <div class="agenda-speaker">Bryan Ao</div>
+            <div class="agenda-title">TrendForce Research Manager</div>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="agenda-row" data-directional-hover-item="">
+        <div data-directional-hover-tile=""></div>
+        <div class="agenda-time">14:40 – 15:00</div>
+        <div class="agenda-topic">HBM Remains the Structural Anchor of the DRAM Industry Amid Shifting Profit Dynamics
+          <div class="agenda-speaker-info">
+            <div class="agenda-speaker">Ellie Wang</div>
+            <div class="agenda-title">TrendForce Senior Analyst</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="agenda-row" data-directional-hover-item="">
+        <div data-directional-hover-tile=""></div>
+        <div class="agenda-time">15:00 – 15:20</div>
+        <div class="agenda-topic">Networking</div>
+      </div>
+      <div class="agenda-row" data-directional-hover-item="">
+        <div data-directional-hover-tile=""></div>
+        <div class="agenda-time">15:20 – 15:40</div>
+        <div class="agenda-topic">Navigating 2026 Foundry Market – Dual Realities of Advanced Dominance and Mature
+          Saturation
+          <div class="agenda-speaker-info">
+            <div class="agenda-speaker">Joanne Chiao</div>
+            <div class="agenda-title">TrendForce Research Manager</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="agenda-row" data-directional-hover-item="">
+        <div data-directional-hover-tile=""></div>
+        <div class="agenda-time">15:40 – 16:00</div>
+        <div class="agenda-topic">AI Server Acceleration: From GPU Dominance to ASIC Diversification
+          <div class="agenda-speaker-info">
+            <div class="agenda-speaker">Fion Chiu</div>
+            <div class="agenda-title">TrendForce Analyst</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════ SPEAKERS (Sticky Steps) ══════════ -->
+  <div class="full-rule"></div>
+  <section id="speakers">
+    <!-- Section header -->
+    <div class="section-wrap" style="padding-bottom:0;">
+      <div style="position:relative;">
+        <div class="section-num">04</div>
+        <p class="section-eyebrow">Featured Speakers</p>
+        <h2 class="section-heading" data-highlight-marker-reveal data-marker-direction="right"
+          data-marker-theme="#c9a96e">Speakers</h2>
+      </div>
+      <div class="section-rule" style="margin-bottom:0;"></div>
+    </div>
+    <!-- Sticky Steps -->
+    <div class="sticky-steps">
+      <div class="sticky-steps__container">
+        <div data-sticky-steps-init class="sticky-steps__collection">
+          <div class="sticky-steps__list">
+
+            <!-- Avril Wu -->
+            <div data-sticky-steps-item data-sticky-steps-item-status="active" class="sticky-steps__item">
+              <div data-sticky-steps-anchor class="sticky-steps__text">
+                <span class="sticky-steps__eyebrow">Senior Research Vice President</span>
+                <h2 class="sticky-steps__h2">Avril Wu</h2>
+                <p class="sticky-steps__p" data-highlight-text data-highlight-scroll-start="top 88%"
+                  data-highlight-scroll-end="center 35%" data-highlight-fade="0.15" data-highlight-stagger="0.08">Avril
+                  Wu has well over a decade of professional experience specializing in
+                  memory product research. She extended her expertise in 2019 to include NAND Flash in addition to DRAM,
+                  qualifying her to cover the entire memory sector.</p>
+              </div>
+              <div class="sticky-steps__media">
+                <div class="sticky-steps__sticky">
+                  <div class="sticky-steps__visual">
+                    <img src="asset/img/AvrilWu.jpg" alt="Avril Wu" class="sticky-steps__cover-image" loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bryan Ao -->
+            <div data-sticky-steps-item data-sticky-steps-item-status="after" class="sticky-steps__item">
+              <div data-sticky-steps-anchor class="sticky-steps__text">
+                <span class="sticky-steps__eyebrow">Research Manager</span>
+                <h2 class="sticky-steps__h2">Bryan Ao</h2>
+                <p class="sticky-steps__p" data-highlight-text data-highlight-scroll-start="top 88%"
+                  data-highlight-scroll-end="center 35%" data-highlight-fade="0.15" data-highlight-stagger="0.08">
+                  Focuses on NAND Flash demand trends for server OEMs, data center operators,
+                  and AI/edge computing providers. Previously specialized in mobile device memory solutions and SSD
+                  controller ICs.</p>
+              </div>
+              <div class="sticky-steps__media">
+                <div class="sticky-steps__sticky">
+                  <div class="sticky-steps__visual">
+                    <img src="asset/img/BryanAo.jpg" alt="Bryan Ao" class="sticky-steps__cover-image" loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ellie Wang -->
+            <div data-sticky-steps-item data-sticky-steps-item-status="after" class="sticky-steps__item">
+              <div data-sticky-steps-anchor class="sticky-steps__text">
+                <span class="sticky-steps__eyebrow">Senior Analyst</span>
+                <h2 class="sticky-steps__h2">Ellie Wang</h2>
+                <p class="sticky-steps__p" data-highlight-text data-highlight-scroll-start="top 88%"
+                  data-highlight-scroll-end="center 35%" data-highlight-fade="0.15" data-highlight-stagger="0.08">
+                  Primarily researches DRAM supply-side capacity, technology development, and
+                  market analysis for consumer demand — covering the full DRAM value chain from production to end-market
+                  trends.</p>
+              </div>
+              <div class="sticky-steps__media">
+                <div class="sticky-steps__sticky">
+                  <div class="sticky-steps__visual">
+                    <img src="asset/img/EllieWang.jpg" alt="Ellie Wang" class="sticky-steps__cover-image"
+                      loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Joanne Chiao -->
+            <div data-sticky-steps-item data-sticky-steps-item-status="after" class="sticky-steps__item">
+              <div data-sticky-steps-anchor class="sticky-steps__text">
+                <span class="sticky-steps__eyebrow">Research Manager</span>
+                <h2 class="sticky-steps__h2">Joanne Chiao</h2>
+                <p class="sticky-steps__p" data-highlight-text data-highlight-scroll-start="top 88%"
+                  data-highlight-scroll-end="center 35%" data-highlight-fade="0.15" data-highlight-stagger="0.08">
+                  Joanne's research focuses on foundry market analysis, including production
+                  capacity, technological development, and customer demand across leading foundry players.</p>
+              </div>
+              <div class="sticky-steps__media">
+                <div class="sticky-steps__sticky">
+                  <div class="sticky-steps__visual">
+                    <img src="asset/img/JoanneChiao.jpg" alt="Joanne Chiao" class="sticky-steps__cover-image"
+                      loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fion Chiu -->
+            <div data-sticky-steps-item data-sticky-steps-item-status="after" class="sticky-steps__item">
+              <div data-sticky-steps-anchor class="sticky-steps__text">
+                <span class="sticky-steps__eyebrow">Analyst</span>
+                <h2 class="sticky-steps__h2">Fion Chiu</h2>
+                <p class="sticky-steps__p" data-highlight-text data-highlight-scroll-start="top 88%"
+                  data-highlight-scroll-end="center 35%" data-highlight-fade="0.15" data-highlight-stagger="0.08">
+                  Research focuses on the AI server industry — HPC/AI chips and thermal
+                  solutions. Background in equity research within the technology sector with expertise in market
+                  dynamics.</p>
+              </div>
+              <div class="sticky-steps__media">
+                <div class="sticky-steps__sticky">
+                  <div class="sticky-steps__visual">
+                    <img src="asset/img/FionChiu.jpg" alt="Fion Chiu" class="sticky-steps__cover-image" loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════ REGISTRATION ══════════ -->
+  <div class="full-rule"></div>
+  <section class="section-wrap" id="registration">
+    <div style="position:relative;">
+      <div class="section-num">05</div>
+      <p class="section-eyebrow">Join Us</p>
+      <h2 class="section-heading" data-highlight-marker-reveal data-marker-direction="right"
+        data-marker-theme="#c9a96e">Registration</h2>
+    </div>
+    <div class="section-rule"></div>
+
+    <div class="reg-grid">
+      <div id="reg-left" data-odometer-group>
+        <p data-odometer-element data-odometer-duration="2" data-odometer-start="$0" data-odometer-end="$399"
+          class="reg-price odometer-h1">$399</p>
+        <p class="reg-price-label">USD per person</p>
+        <p class="reg-note">
+          Online registration will close at <strong style="display:block">12:00 pm on May 11, 2026</strong>
+          Please contact us for further assistance.
+        </p>
+        <a href="#" class="btn-register" id="register-cta">Register NOW</a>
+      </div>
+
+      <div id="reg-right">
+        <p class="terms-label">Terms &amp; Conditions</p>
+        <div class="terms-block">
+          <div class="term-item">
+            <p class="term-num">01</p>
+            <p class="term-text">Registration fees are non-refundable.</p>
+          </div>
+          <div class="term-item">
+            <p class="term-num">02</p>
+            <p class="term-text">Once the payment is received, we'll send an invoice code to your e-mail. Please bring
+              the code with a business card to check in.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════ CONTACT ══════════ -->
+  <div class="full-rule"></div>
+  <section class="section-wrap" id="contact">
+    <div style="position:relative;">
+      <div class="section-num">06</div>
+      <p class="section-eyebrow">Get in Touch</p>
+      <h2 class="section-heading" data-highlight-marker-reveal data-marker-direction="right"
+        data-marker-theme="#c9a96e">Contact Us</h2>
+    </div>
+    <div class="section-rule"></div>
+
+    <p style="font-size:16px; color:#6a6560; line-height:1.7; margin-bottom:52px; max-width:520px;">
+      If you need any assistance, please contact us:
+    </p>
+
+    <div class="contact-grid" id="contact-grid">
+      <div class="contact-card">
+        <p class="contact-name">Liz Chen</p>
+        <div class="contact-detail">
+          <a href="mailto:trendforce_service@trendforce.com" class="contact-email">trendforce_service@trendforce.com</a>
+          <span class="contact-phone">+886-2-8978-6488 ext. 372</span>
+        </div>
+      </div>
+      <div class="contact-card">
+        <p class="contact-name">Jade Chou</p>
+        <div class="contact-detail">
+          <a href="mailto:trendforce_service@trendforce.com" class="contact-email">trendforce_service@trendforce.com</a>
+          <span class="contact-phone">+886-2-8978-6488 ext. 661</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer id="footer">
+    <div>
+      <p class="footer-organizer-label">Organized by</p>
+      <img src="asset/img/TF-logo.svg" alt="TrendForce" style="height:30px; opacity:1;">
+    </div>
+    <div class="footer-meta">
+      <span>© 2026 TrendForce Corp. All rights reserved.</span>
+    </div>
+  </footer>
+
+
+  <!-- ══════════ SCRIPTS ══════════ -->
+  <script src="asset/js/main.js"></script>
+
+  <!-- JS 動態效果模組 -->
+  <script src="asset/js/ScrollTransition.js"></script>
+  <script src="asset/js/TextAnimation.js"></script>
+  <script src="asset/js/HoverState.js"></script>
+  <script src="asset/js/StickyStep.js"></script>
+  <script src="asset/js/Parallax.js"></script>
+  <script src="asset/js/DrawUnderline.js"></script>
+  <script src="asset/js/NumberOdometer.js"></script>
+  <script src="asset/js/ShutterScroll.js"></script>
+
+</body>
+
+</html>
