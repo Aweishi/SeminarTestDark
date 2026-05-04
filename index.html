@@ -6,39 +6,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TrendForce Seminar — New York 2026</title>
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Lato:wght@300;400;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
     rel="stylesheet">
 
-  <!-- GSAP Core + Plugins -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/SplitText.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/DrawSVGPlugin.min.js"></script>
+  <!-- Preload above-fold assets -->
+  <link rel="preload" href="asset/img/HeroSection_A.jpg" as="image">
+  <link rel="preload" href="asset/img/HeroSection_Text-13.svg" as="image">
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            serif: ['Instrument Serif', 'serif'],
-            sans: ['Space Grotesk', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
+  <!-- GSAP Core + Plugins (defer = download in parallel, execute after parse) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/SplitText.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/DrawSVGPlugin.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/Draggable.min.js"></script>
 
   <link rel="stylesheet" href="asset/css/style.css">
 </head>
 
 <body>
+
+  <!-- ══════════ LOADER ══════════ -->
+  <div id="loader" aria-hidden="true">
+    <div id="loader-inner">
+      <div id="loader-counter"><span id="loader-number">0</span><span id="loader-percent">%</span></div>
+      <div id="loader-bar-track">
+        <div id="loader-bar"></div>
+      </div>
+    </div>
+  </div>
 
   <!-- ══════════ NAV ══════════ -->
   <nav id="main-nav">
@@ -51,13 +50,9 @@
           class="draw-nav-box"></div></a>
       <a href="#agenda" class="nav-link draw-nav-link" data-draw-line>Agenda<div data-draw-line-box
           class="draw-nav-box"></div></a>
-      <a href="#speakers" class="nav-link draw-nav-link" data-draw-line>Speakers<div data-draw-line-box
+      <a href="#giveaway" class="nav-link draw-nav-link" data-draw-line>GiveAway<div data-draw-line-box
           class="draw-nav-box"></div></a>
-      <a href="#registration" class="nav-link draw-nav-link" data-draw-line>Registration<div data-draw-line-box
-          class="draw-nav-box"></div></a>
-      <a href="#about" class="nav-link draw-nav-link" data-draw-line>Location<div data-draw-line-box
-          class="draw-nav-box"></div></a>
-      <a href="#contact" class="nav-link draw-nav-link" data-draw-line>Contact<div data-draw-line-box
+      <a href="#partners" class="nav-link draw-nav-link" data-draw-line>Partners<div data-draw-line-box
           class="draw-nav-box"></div></a>
       <a href="#registration" class="nav-cta">Register</a>
     </div>
@@ -72,10 +67,9 @@
     <div id="mobile-menu-inner">
       <a href="#overview" class="mobile-nav-link" data-mobile-link>Overview</a>
       <a href="#agenda" class="mobile-nav-link" data-mobile-link>Agenda</a>
-      <a href="#speakers" class="mobile-nav-link" data-mobile-link>Speakers</a>
-      <a href="#registration" class="mobile-nav-link" data-mobile-link>Registration</a>
-      <a href="#about" class="mobile-nav-link" data-mobile-link>Location</a>
-      <a href="#contact" class="mobile-nav-link" data-mobile-link>Contact</a>
+      <a href="#giveaway" class="mobile-nav-link" data-mobile-link>GiveAway</a>
+      <a href="#partners" class="mobile-nav-link" data-mobile-link>Partners</a>
+      <a href="#registration" class="mobile-nav-link" data-mobile-link>Register</a>
     </div>
   </div>
 
@@ -114,136 +108,265 @@
       realities of the foundry market, and the diversification of AI servers. This session provides critical insights
       for navigating the 2026–2028 supercycle and capturing emerging market opportunities.
     </p>
+
+    <!-- Highlights -->
+    <div class="overview-highlights">
+
+      <article class="overview-highlight">
+        <div class="overview-highlight-media">
+          <!-- 替換為實際圖片路徑 -->
+          <img class="overview-highlight-photo" src="asset/img/highlight-memory.jpg" alt="Memory Supercycle"
+            loading="lazy">
+        </div>
+        <div class="overview-highlight-overlay"></div>
+        <div class="overview-highlight-content">
+          <p class="overview-highlight-label">Memory</p>
+          <h3 class="overview-highlight-title">記憶體與儲存</h3>
+          <p class="overview-highlight-desc">從雲端到邊緣的數據賦能，定義 AI 時代的 HBM 與高容量 SSD 存取效率</p>
+        </div>
+      </article>
+
+      <article class="overview-highlight">
+        <div class="overview-highlight-media">
+          <!-- 替換為實際圖片路徑 -->
+          <img class="overview-highlight-photo" src="asset/img/highlight-energy.jpg" alt="Energy" loading="lazy">
+        </div>
+        <div class="overview-highlight-overlay"></div>
+        <div class="overview-highlight-content">
+          <p class="overview-highlight-label">Energy</p>
+          <h3 class="overview-highlight-title">電源與散熱</h3>
+          <p class="overview-highlight-desc">強化 AI 資料中心韌性，液冷關鍵技術與高可靠備援電力調度</p>
+        </div>
+      </article>
+
+      <article class="overview-highlight">
+        <div class="overview-highlight-media">
+          <!-- 替換為實際圖片路徑 -->
+          <img class="overview-highlight-photo" src="asset/img/highlight-aiserver.jpg" alt="AI Server" loading="lazy">
+        </div>
+        <div class="overview-highlight-overlay"></div>
+        <div class="overview-highlight-content">
+          <p class="overview-highlight-label">AI Server</p>
+          <h3 class="overview-highlight-title">AI 伺服器平台</h3>
+          <p class="overview-highlight-desc">掌握 Blackwell 與供應鏈整合先機，跨越設計到部署的 AI 伺服器戰略</p>
+        </div>
+      </article>
+
+    </div>
   </section>
 
-
-  <!-- ══════════ ABOUT ══════════ -->
-  <div class="full-rule"></div>
-  <section class="section-wrap" id="about">
-    <div style="position:relative;">
-      <div class="section-num">02</div>
-      <p class="section-eyebrow">About the Seminar</p>
-      <h2 class="section-heading" data-highlight-marker-reveal data-marker-direction="right"
-        data-marker-theme="#c9a96e">About</h2>
-    </div>
-    <div class="section-rule"></div>
-
-
-    <div class="about-grid">
-      <div class="about-cell   ">
-        <p class="about-label">Date</p>
-        <p class="about-value">May 12, 2026</p>
-      </div>
-      <div class="about-cell ">
-        <p class="about-label">Time</p>
-        <p class="about-value">14:00 – 16:00</p>
-        <p class="about-sub">Check-in begins at 13:30</p>
-      </div>
-      <div class="about-cell">
-        <p class="about-label">Language</p>
-        <p class="about-value">English</p>
-      </div>
-      <div class="about-cell">
-        <p class="about-label">Locate</p>
-        <p class="about-value">Concourse G, Concourse Level</p>
-        <p class="about-sub">New York Hilton Midtown 1335 Avenue of the Americas New York, NY 10019, USA</p>
-      </div>
-    </div>
-  </section>
 
 
   <!-- ══════════ AGENDA ══════════ -->
   <div class="full-rule"></div>
   <section class="section-wrap" id="agenda">
     <div style="position:relative;">
-      <div class="section-num">03</div>
+      <div class="section-num">02</div>
       <p class="section-eyebrow">Program</p>
       <h2 class="section-heading" data-highlight-marker-reveal data-marker-direction="right"
         data-marker-theme="#c9a96e">Agenda</h2>
     </div>
-    <div class="section-rule"></div>
+    <div class="agenda-meta">
+      <div class="agenda-meta-item">
+        <p class="about-label">Date</p>
+        <p class="agenda-meta-value">May 12, 2026</p>
+      </div>
+      <div class="agenda-meta-item">
+        <p class="about-label">Time</p>
+        <p class="agenda-meta-value">14:00 – 16:00</p>
+        <p class="agenda-meta-sub">Check-in begins at 13:30</p>
+      </div>
+      <div class="agenda-meta-item">
+        <p class="about-label">Location</p>
+        <p class="agenda-meta-value">Concourse G, Concourse Level</p>
+        <p class="agenda-meta-sub">New York Hilton Midtown, 1335 Avenue of the Americas, New York, NY 10019</p>
+      </div>
+    </div>
 
-    <p class="agenda-note">* The Agenda is preliminary and subject to change without notice.</p>
-
-    <div class="agenda-table" id="agenda-table" data-directional-hover="" data-type="y">
+    <div class="agenda-table" id="agenda-table" data-directional-hover="" data-type="y" data-accordion-css-init
+      data-accordion-close-siblings="true">
       <div class="agenda-row is-header">
         <div>Time</div>
         <div>Topic</div>
-
       </div>
+
+      <!-- Registration (no accordion) -->
       <div class="agenda-row" data-directional-hover-item="">
         <div data-directional-hover-tile=""></div>
         <div class="agenda-time">13:00 – 14:00</div>
         <div class="agenda-topic">Registration</div>
-
       </div>
-      <div class="agenda-row" data-directional-hover-item="">
+
+      <!-- Avril Wu -->
+      <div class="agenda-row" data-directional-hover-item="" data-accordion-status="not-active">
         <div data-directional-hover-tile=""></div>
         <div class="agenda-time">14:00 – 14:20</div>
-        <div class="agenda-topic">The Memory Supercycle 2026–2028: Bridging the Structural Gap from Consumer to AI
-          Dominance
-
+        <div class="agenda-topic" data-accordion-toggle>
+          <div class="agenda-topic-header">
+            <span>The Memory Supercycle 2026–2028: Bridging the Structural Gap from Consumer to AI Dominance</span>
+            <svg class="agenda-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
           <div class="agenda-speaker-info">
             <div class="agenda-speaker">Avril Wu</div>
             <div class="agenda-title">TrendForce Senior Research Vice President</div>
           </div>
-
-
+          <div class="agenda-accordion-body">
+            <div class="agenda-accordion-inner">
+              <p class="agenda-bio">The global memory market is currently undergoing a fundamental transformation that
+                extends far beyond traditional cyclicality. Between 2025 and 2028, the industry is witnessing a
+                "structural crunch" as leading manufacturers aggressively reallocate wafer capacity from commodity DRAM
+                and NAND toward High-Bandwidth Memory (HBM) to satisfy the insatiable appetite of AI infrastructure.
+                This presentation analyzes the critical shift in Capital Expenditure (Capex) and capacity additions,
+                exploring how the transition from consumer-driven demand to AI and general-purpose server dominance has
+                created an unprecedented supply-demand imbalance. We will evaluate the impact of this transition on
+                pricing and availability through 2028. Finally, we look toward the next horizon of production
+                innovation, examining how emerging technologies like Compute Express Link (CXL) and High-Bandwidth Flash
+                (HBF) will redefine the memory hierarchy and offer scalable solutions to the industry's capacity
+                constraints.</p>
+            </div>
+          </div>
         </div>
-
       </div>
-      <div class="agenda-row" data-directional-hover-item="">
+
+      <!-- Bryan Ao -->
+      <div class="agenda-row" data-directional-hover-item="" data-accordion-status="not-active">
         <div data-directional-hover-tile=""></div>
         <div class="agenda-time">14:20 – 14:40</div>
-        <div class="agenda-topic">NAND Flash Demand Projections in the Era of AI Inference
+        <div class="agenda-topic" data-accordion-toggle>
+          <div class="agenda-topic-header">
+            <span>NAND Flash Demand Projections in the Era of AI Inference</span>
+            <svg class="agenda-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
           <div class="agenda-speaker-info">
             <div class="agenda-speaker">Bryan Ao</div>
             <div class="agenda-title">TrendForce Research Manager</div>
           </div>
+          <div class="agenda-accordion-body">
+            <div class="agenda-accordion-inner">
+              <p class="agenda-bio">As AI inference scales across cloud and edge environments, NAND Flash is
+                experiencing a structural demand transformation. This session examines how the proliferation of large
+                language models, vector databases, and retrieval-augmented generation (RAG) systems is reshaping storage
+                requirements at the server level. We analyze the shift in enterprise SSD demand patterns driven by AI
+                workloads, the divergence between consumer NAND pricing and enterprise SSD pricing dynamics, and how QLC
+                adoption is accelerating to meet cost-per-bit requirements. The presentation will also explore regional
+                supply dynamics, including NAND bit output forecasts through 2027 and the competitive positioning of
+                major NAND suppliers as they navigate the transition from commodity storage toward AI-optimized
+                solutions.</p>
+            </div>
+          </div>
         </div>
-
-
       </div>
-      <div class="agenda-row" data-directional-hover-item="">
+
+      <!-- Ellie Wang -->
+      <div class="agenda-row" data-directional-hover-item="" data-accordion-status="not-active">
         <div data-directional-hover-tile=""></div>
         <div class="agenda-time">14:40 – 15:00</div>
-        <div class="agenda-topic">HBM Remains the Structural Anchor of the DRAM Industry Amid Shifting Profit Dynamics
+        <div class="agenda-topic" data-accordion-toggle>
+          <div class="agenda-topic-header">
+            <span>HBM Remains the Structural Anchor of the DRAM Industry Amid Shifting Profit Dynamics</span>
+            <svg class="agenda-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
           <div class="agenda-speaker-info">
             <div class="agenda-speaker">Ellie Wang</div>
             <div class="agenda-title">TrendForce Senior Analyst</div>
           </div>
+          <div class="agenda-accordion-body">
+            <div class="agenda-accordion-inner">
+              <p class="agenda-bio">High-Bandwidth Memory has emerged as the single most consequential product category
+                in the DRAM industry, reshaping supplier economics and capacity allocation decisions across the board.
+                This session delivers an in-depth analysis of HBM3E supply-demand dynamics, the transition timeline
+                toward HBM4, and the strategic divergence between Samsung, SK Hynix, and Micron as each pursues
+                differentiated technology roadmaps. We examine how HBM's margin premium is enabling DRAM suppliers to
+                fund ongoing capital investment despite softness in standard DRAM segments, and evaluate scenarios for
+                HBM pricing sustainability through 2028 as additional capacity comes online and competition intensifies
+                for next-generation AI accelerator socket wins.</p>
+            </div>
+          </div>
         </div>
-
       </div>
+
+      <!-- Networking (no accordion) -->
       <div class="agenda-row" data-directional-hover-item="">
         <div data-directional-hover-tile=""></div>
         <div class="agenda-time">15:00 – 15:20</div>
         <div class="agenda-topic">Networking</div>
       </div>
-      <div class="agenda-row" data-directional-hover-item="">
+
+      <!-- Joanne Chiao -->
+      <div class="agenda-row" data-directional-hover-item="" data-accordion-status="not-active">
         <div data-directional-hover-tile=""></div>
         <div class="agenda-time">15:20 – 15:40</div>
-        <div class="agenda-topic">Navigating 2026 Foundry Market – Dual Realities of Advanced Dominance and Mature
-          Saturation
+        <div class="agenda-topic" data-accordion-toggle>
+          <div class="agenda-topic-header">
+            <span>Navigating 2026 Foundry Market – Dual Realities of Advanced Dominance and Mature Saturation</span>
+            <svg class="agenda-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
           <div class="agenda-speaker-info">
             <div class="agenda-speaker">Joanne Chiao</div>
             <div class="agenda-title">TrendForce Research Manager</div>
           </div>
+          <div class="agenda-accordion-body">
+            <div class="agenda-accordion-inner">
+              <p class="agenda-bio">The global foundry market in 2026 is defined by a stark divergence: while advanced
+                nodes below 3nm experience robust AI-driven demand with limited supply, mature nodes above 28nm face
+                chronic overcapacity driven by aggressive Chinese domestic capacity expansion. This presentation
+                dissects both realities — analyzing TSMC's competitive moat and pricing power at leading-edge nodes,
+                Intel Foundry's progress toward customer viability, and Samsung's efforts to stabilize yield at advanced
+                nodes. Simultaneously, we examine the structural overcapacity dynamics in mature nodes, the pricing
+                pressures affecting specialty foundries, and the geopolitical dimensions of domestic content
+                requirements across key markets including China, the United States, and Europe.</p>
+            </div>
+          </div>
         </div>
-
       </div>
-      <div class="agenda-row" data-directional-hover-item="">
+
+      <!-- Fion Chiu -->
+      <div class="agenda-row" data-directional-hover-item="" data-accordion-status="not-active">
         <div data-directional-hover-tile=""></div>
         <div class="agenda-time">15:40 – 16:00</div>
-        <div class="agenda-topic">AI Server Acceleration: From GPU Dominance to ASIC Diversification
+        <div class="agenda-topic" data-accordion-toggle>
+          <div class="agenda-topic-header">
+            <span>AI Server Acceleration: From GPU Dominance to ASIC Diversification</span>
+            <svg class="agenda-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
           <div class="agenda-speaker-info">
             <div class="agenda-speaker">Fion Chiu</div>
             <div class="agenda-title">TrendForce Analyst</div>
           </div>
+          <div class="agenda-accordion-body">
+            <div class="agenda-accordion-inner">
+              <p class="agenda-bio">The AI server market is undergoing its most significant architectural transformation
+                since the initial GPU compute wave. As hyperscalers seek greater power efficiency, lower inference
+                costs, and reduced dependency on a single supplier, custom silicon and merchant ASICs are rapidly
+                gaining ground against GPU incumbents. This session analyzes the competitive landscape of AI
+                accelerators including Google TPUs, AWS Trainium, Microsoft Maia, and emerging merchant silicon
+                providers. We evaluate the implications of ASIC diversification for server OEM supply chains, thermal
+                and power delivery infrastructure requirements, and memory subsystem specifications — including
+                rack-level power density trends and the growing role of liquid cooling in enabling next-generation AI
+                compute density.</p>
+            </div>
+          </div>
         </div>
-
       </div>
+
     </div>
+
+    <p class="agenda-note">* The Agenda is preliminary and subject to change without notice.</p>
   </section>
 
 
@@ -253,125 +376,247 @@
     <!-- Section header -->
     <div class="section-wrap" style="padding-bottom:0;">
       <div style="position:relative;">
-        <div class="section-num">04</div>
+        <div class="section-num">03</div>
         <p class="section-eyebrow">Featured Speakers</p>
         <h2 class="section-heading" data-highlight-marker-reveal data-marker-direction="right"
           data-marker-theme="#c9a96e">Speakers</h2>
       </div>
       <div class="section-rule" style="margin-bottom:0;"></div>
     </div>
-    <!-- Sticky Steps -->
-    <div class="sticky-steps">
-      <div class="sticky-steps__container">
-        <div data-sticky-steps-init class="sticky-steps__collection">
-          <div class="sticky-steps__list">
+    <!-- Speakers Slider -->
+    <div class="section-wrap" style="padding-top:60px;">
+      <div class="speakers-slider">
+        <div class="speakers-slider-row">
+          <button class="spk-btn" id="spk-prev" aria-label="Previous speaker">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M12 15L7 10L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+          <div class="speakers-track-wrap">
+            <div class="speakers-track" id="speakers-track">
 
-            <!-- Avril Wu -->
-            <div data-sticky-steps-item data-sticky-steps-item-status="active" class="sticky-steps__item">
-              <div data-sticky-steps-anchor class="sticky-steps__text">
-                <span class="sticky-steps__eyebrow">Senior Research Vice President</span>
-                <h2 class="sticky-steps__h2">Avril Wu</h2>
-                <p class="sticky-steps__p" data-highlight-text data-highlight-scroll-start="top 88%"
-                  data-highlight-scroll-end="center 35%" data-highlight-fade="0.15" data-highlight-stagger="0.08">Avril
-                  Wu has well over a decade of professional experience specializing in
-                  memory product research. She extended her expertise in 2019 to include NAND Flash in addition to DRAM,
-                  qualifying her to cover the entire memory sector.</p>
-              </div>
-              <div class="sticky-steps__media">
-                <div class="sticky-steps__sticky">
-                  <div class="sticky-steps__visual">
-                    <img src="asset/img/AvrilWu.jpg" alt="Avril Wu" class="sticky-steps__cover-image" loading="lazy">
+              <!-- Avril Wu -->
+              <div class="speaker-card" data-pixelated-image-reveal>
+                <div class="speaker-img-wrap">
+                  <img src="asset/img/AvrilWu.jpg" alt="Avril Wu" loading="lazy">
+                  <div class="speaker-name-overlay">
+                    <p class="speaker-name">Avril Wu</p>
+                    <p class="speaker-org">TrendForce</p>
+                  </div>
+                  <div data-pixelated-image-reveal-grid class="pixelated-image-card__pixels"></div>
+                  <div data-pixelated-image-reveal-active class="speaker-bio-overlay">
+                    <span class="speaker-bio-role">Senior Research Vice President</span>
+                    <p class="speaker-bio-text">Avril Wu has well over a decade of professional experience specializing
+                      in
+                      memory product research. She extended her expertise in 2019 to include NAND Flash in addition to
+                      DRAM, qualifying her to cover the entire memory sector.</p>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Bryan Ao -->
-            <div data-sticky-steps-item data-sticky-steps-item-status="after" class="sticky-steps__item">
-              <div data-sticky-steps-anchor class="sticky-steps__text">
-                <span class="sticky-steps__eyebrow">Research Manager</span>
-                <h2 class="sticky-steps__h2">Bryan Ao</h2>
-                <p class="sticky-steps__p" data-highlight-text data-highlight-scroll-start="top 88%"
-                  data-highlight-scroll-end="center 35%" data-highlight-fade="0.15" data-highlight-stagger="0.08">
-                  Focuses on NAND Flash demand trends for server OEMs, data center operators,
-                  and AI/edge computing providers. Previously specialized in mobile device memory solutions and SSD
-                  controller ICs.</p>
-              </div>
-              <div class="sticky-steps__media">
-                <div class="sticky-steps__sticky">
-                  <div class="sticky-steps__visual">
-                    <img src="asset/img/BryanAo.jpg" alt="Bryan Ao" class="sticky-steps__cover-image" loading="lazy">
+              <!-- Bryan Ao -->
+              <div class="speaker-card" data-pixelated-image-reveal>
+                <div class="speaker-img-wrap">
+                  <img src="asset/img/BryanAo.jpg" alt="Bryan Ao" loading="lazy">
+                  <div class="speaker-name-overlay">
+                    <p class="speaker-name">Bryan Ao</p>
+                    <p class="speaker-org">TrendForce</p>
+                  </div>
+                  <div data-pixelated-image-reveal-grid class="pixelated-image-card__pixels"></div>
+                  <div data-pixelated-image-reveal-active class="speaker-bio-overlay">
+                    <span class="speaker-bio-role">Research Manager</span>
+                    <p class="speaker-bio-text">Focuses on NAND Flash demand trends for server OEMs, data center
+                      operators, and AI/edge computing providers. Previously specialized in mobile device memory
+                      solutions
+                      and SSD controller ICs.</p>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Ellie Wang -->
-            <div data-sticky-steps-item data-sticky-steps-item-status="after" class="sticky-steps__item">
-              <div data-sticky-steps-anchor class="sticky-steps__text">
-                <span class="sticky-steps__eyebrow">Senior Analyst</span>
-                <h2 class="sticky-steps__h2">Ellie Wang</h2>
-                <p class="sticky-steps__p" data-highlight-text data-highlight-scroll-start="top 88%"
-                  data-highlight-scroll-end="center 35%" data-highlight-fade="0.15" data-highlight-stagger="0.08">
-                  Primarily researches DRAM supply-side capacity, technology development, and
-                  market analysis for consumer demand — covering the full DRAM value chain from production to end-market
-                  trends.</p>
-              </div>
-              <div class="sticky-steps__media">
-                <div class="sticky-steps__sticky">
-                  <div class="sticky-steps__visual">
-                    <img src="asset/img/EllieWang.jpg" alt="Ellie Wang" class="sticky-steps__cover-image"
-                      loading="lazy">
+              <!-- Ellie Wang -->
+              <div class="speaker-card" data-pixelated-image-reveal>
+                <div class="speaker-img-wrap">
+                  <img src="asset/img/EllieWang.jpg" alt="Ellie Wang" loading="lazy">
+                  <div class="speaker-name-overlay">
+                    <p class="speaker-name">Ellie Wang</p>
+                    <p class="speaker-org">TrendForce</p>
+                  </div>
+                  <div data-pixelated-image-reveal-grid class="pixelated-image-card__pixels"></div>
+                  <div data-pixelated-image-reveal-active class="speaker-bio-overlay">
+                    <span class="speaker-bio-role">Senior Analyst</span>
+                    <p class="speaker-bio-text">Primarily researches DRAM supply-side capacity, technology development,
+                      and market analysis for consumer demand — covering the full DRAM value chain from production to
+                      end-market trends.</p>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Joanne Chiao -->
-            <div data-sticky-steps-item data-sticky-steps-item-status="after" class="sticky-steps__item">
-              <div data-sticky-steps-anchor class="sticky-steps__text">
-                <span class="sticky-steps__eyebrow">Research Manager</span>
-                <h2 class="sticky-steps__h2">Joanne Chiao</h2>
-                <p class="sticky-steps__p" data-highlight-text data-highlight-scroll-start="top 88%"
-                  data-highlight-scroll-end="center 35%" data-highlight-fade="0.15" data-highlight-stagger="0.08">
-                  Joanne's research focuses on foundry market analysis, including production
-                  capacity, technological development, and customer demand across leading foundry players.</p>
-              </div>
-              <div class="sticky-steps__media">
-                <div class="sticky-steps__sticky">
-                  <div class="sticky-steps__visual">
-                    <img src="asset/img/JoanneChiao.jpg" alt="Joanne Chiao" class="sticky-steps__cover-image"
-                      loading="lazy">
+              <!-- Joanne Chiao -->
+              <div class="speaker-card" data-pixelated-image-reveal>
+                <div class="speaker-img-wrap">
+                  <img src="asset/img/JoanneChiao.jpg" alt="Joanne Chiao" loading="lazy">
+                  <div class="speaker-name-overlay">
+                    <p class="speaker-name">Joanne Chiao</p>
+                    <p class="speaker-org">TrendForce</p>
+                  </div>
+                  <div data-pixelated-image-reveal-grid class="pixelated-image-card__pixels"></div>
+                  <div data-pixelated-image-reveal-active class="speaker-bio-overlay">
+                    <span class="speaker-bio-role">Research Manager</span>
+                    <p class="speaker-bio-text">Joanne's research focuses on foundry market analysis, including
+                      production
+                      capacity, technological development, and customer demand across leading foundry players.</p>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Fion Chiu -->
-            <div data-sticky-steps-item data-sticky-steps-item-status="after" class="sticky-steps__item">
-              <div data-sticky-steps-anchor class="sticky-steps__text">
-                <span class="sticky-steps__eyebrow">Analyst</span>
-                <h2 class="sticky-steps__h2">Fion Chiu</h2>
-                <p class="sticky-steps__p" data-highlight-text data-highlight-scroll-start="top 88%"
-                  data-highlight-scroll-end="center 35%" data-highlight-fade="0.15" data-highlight-stagger="0.08">
-                  Research focuses on the AI server industry — HPC/AI chips and thermal
-                  solutions. Background in equity research within the technology sector with expertise in market
-                  dynamics.</p>
-              </div>
-              <div class="sticky-steps__media">
-                <div class="sticky-steps__sticky">
-                  <div class="sticky-steps__visual">
-                    <img src="asset/img/FionChiu.jpg" alt="Fion Chiu" class="sticky-steps__cover-image" loading="lazy">
+              <!-- Fion Chiu -->
+              <div class="speaker-card" data-pixelated-image-reveal>
+                <div class="speaker-img-wrap">
+                  <img src="asset/img/FionChiu.jpg" alt="Fion Chiu" loading="lazy">
+                  <div class="speaker-name-overlay">
+                    <p class="speaker-name">Fion Chiu</p>
+                    <p class="speaker-org">TrendForce</p>
+                  </div>
+                  <div data-pixelated-image-reveal-grid class="pixelated-image-card__pixels"></div>
+                  <div data-pixelated-image-reveal-active class="speaker-bio-overlay">
+                    <span class="speaker-bio-role">Analyst</span>
+                    <p class="speaker-bio-text">Research focuses on the AI server industry — HPC/AI chips and thermal
+                      solutions. Background in equity research within the technology sector with expertise in market
+                      dynamics.</p>
                   </div>
                 </div>
               </div>
-            </div>
 
+            </div>
           </div>
+          <button class="spk-btn" id="spk-next" aria-label="Next speaker">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M8 5L13 10L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
         </div>
+
+        <!-- Controls: dots only -->
+        <div class="speakers-controls" id="speakers-controls">
+          <div class="spk-dots" id="spk-dots"></div>
+        </div>
+
       </div>
     </div>
   </section>
+
+  <!-- ══════════ GIVEAWAY ══════════ -->
+  <div class="full-rule"></div>
+  <section class="section-wrap" id="giveaway">
+    <div style="position:relative;">
+      <div class="section-num">04</div>
+      <p class="section-eyebrow">Lucky Draw</p>
+      <h2 class="section-heading" data-highlight-marker-reveal data-marker-direction="right"
+        data-marker-theme="#c9a96e">GiveAway</h2>
+    </div>
+    <div class="section-rule"></div>
+
+
+
+    <div class="giveaway-stage" id="giveaway-stage">
+
+      <div class="giveaway-deck" id="giveaway-deck">
+
+        <div class="giveaway-card giveaway-card--1">
+          <span class="giveaway-card-limit">限量 3 名</span>
+          <div class="giveaway-card-inner">
+            <div class="giveaway-card-visual">
+              <img src="asset/img/mouse.png" alt="mouse" loading="lazy">
+            </div>
+            <div class="giveaway-card-content">
+              <span class="giveaway-card-tag">抽獎禮</span>
+              <h3 class="giveaway-card-title">人體工學垂直無線藍牙滑鼠</h3>
+              <p class="giveaway-card-desc"><span>報到時提供名片即可參加抽獎，於活動最後 Lucky Draw 環節抽出，恕不挑色。</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="giveaway-card giveaway-card--2">
+          <span class="giveaway-card-limit">送完為止</span>
+          <div class="giveaway-card-inner">
+            <div class="giveaway-card-visual">
+              <img src="asset/img/7-11Ticket.png" alt="7-11" loading="lazy">
+            </div>
+            <div class="giveaway-card-content">
+              <span class="giveaway-card-tag">報到禮</span>
+              <h3 class="giveaway-card-title">7-11 100元禮券</h3>
+              <p class="giveaway-card-desc"><span>出席完成報到即可獲得，依完成報到順序發送，送完為止。</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="giveaway-card giveaway-card--3">
+          <span class="giveaway-card-limit">限量 50 份</span>
+          <div class="giveaway-card-inner">
+            <div class="giveaway-card-visual">
+              <img src="asset/img/7-11Cafe.png" alt="7-11Cafe" loading="lazy">
+            </div>
+            <div class="giveaway-card-content">
+              <span class="giveaway-card-tag">集點禮</span>
+              <h3 class="giveaway-card-title">7-11咖啡提貨卡</h3>
+              <p class="giveaway-card-desc"><span>全程參與議程並完成現場攤位互動集點，活動結束後至報到處繳回識別證即可兌換。</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="giveaway-card giveaway-card--4">
+          <div class="giveaway-card-limit"><span>限量</span> 1 份</div>
+          <div class="giveaway-card-inner">
+            <div class="giveaway-card-visual">
+              <span class="giveaway-card-ornament">04</span>
+            </div>
+            <div class="giveaway-card-content">
+              <span class="giveaway-card-tag">企業夥伴禮</span>
+              <h3 class="giveaway-card-title">神秘禮物</h3>
+              <p class="giveaway-card-desc"><span>同公司三人同行並完成報到，即可於報到處領取神秘禮物一份。為確保您的權益，請務必於活動系統完成報名。</span></p>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+      <!-- Giveaway pagination controls -->
+      <div id="giveaway-controls" class="giveaway-controls">
+        <button class="spk-btn" id="gw-prev" aria-label="Previous prizes">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M12 15L7 10L12 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="spk-dots" id="gw-dots"></div>
+        <button class="spk-btn" id="gw-next" aria-label="Next prizes">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M8 5L13 10L8 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+
+
+
+    </div>
+
+    <div class="giveaway-intro">
+      <h3>抽獎禮領獎注意事項</h3>
+      <ul>
+        <li>須於報到時提供一張公司名片抽獎，得獎人須在現場不得代領。</li>
+        <li>本活動抽獎贈品以實物為準，限中獎人本人領取，中獎人不可要求折抵現金、轉讓他人領獎或更換獎項內容。</li>
+        <li>參加者或得獎者有違反本活動辦法及法令，或以不正當、詐欺或舞弊之行為參加本活動，主辦單位有權取消其抽獎或得獎資格，且主辦單位有權追究其法律責任。</li>
+        <li>主辦單位保留變更、修改或終止本活動之權利，並保留對得獎人(含大陸人士和其他不具中華民國國籍者)，機會中獎所得稅為20%，中獎者應自付中獎商品之稅金，否則視同放棄。</li>
+        <li>本活動之贈品提供及寄送僅限定於台灣。</li>
+      </ul>
+    </div>
+  </section>
+
 
 
   <!-- ══════════ REGISTRATION ══════════ -->
@@ -415,11 +660,126 @@
   </section>
 
 
+  <!-- ══════════ PARTNERS ══════════ -->
+  <div class="full-rule"></div>
+  <section class="section-wrap" id="partners">
+    <div style="position:relative;">
+      <div class="section-num">06</div>
+      <p class="section-eyebrow">Acknowledgements</p>
+      <h2 class="section-heading" data-highlight-marker-reveal data-marker-direction="right"
+        data-marker-theme="#c9a96e">Partners</h2>
+    </div>
+    <div class="section-rule"></div>
+
+    <!-- 主辦單位 -->
+    <div class="partners-tier">
+      <div class="partners-tier-header">
+        <span class="partners-tier-label">主辦單位</span>
+      </div>
+      <div class="partners-marquee">
+        <div class="partners-marquee-track" data-marquee-speed="20">
+          <div class="partner-logo-slot">
+            <img src="asset/img/Logo-Trendforce.png" alt="TrendForce">
+          </div>
+          <div class="partner-logo-slot">
+            <img src="asset/img/Logo-Trendforce-1.png" alt="TrendForce">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 金級贊助 -->
+    <div class="partners-tier">
+      <div class="partners-tier-header">
+        <span class="partners-tier-label partners-tier-label--gold">金級贊助</span>
+      </div>
+      <div class="partners-marquee">
+        <div class="partners-marquee-track" data-marquee-speed="20">
+          <div class="partner-logo-slot">
+            <img src="asset/img/Logo-Nvidia.png" alt="NVIDIA">
+          </div>
+          <div class="partner-logo-slot">
+            <img src="asset/img/Logo-Asus.png" alt="ASUS">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 銀級贊助 -->
+    <div class="partners-tier">
+      <div class="partners-tier-header">
+        <span class="partners-tier-label partners-tier-label--silver">銀級贊助</span>
+      </div>
+      <div class="partners-marquee">
+        <div class="partners-marquee-track" data-marquee-speed="20">
+          <div class="partner-logo-slot">
+            <img src="asset/img/Logo-Adata.png" alt="ADATA">
+          </div>
+          <div class="partner-logo-slot">
+            <img src="asset/img/Logo-Cybernet.png" alt="Cybernet">
+          </div>
+          <div class="partner-logo-slot">
+            <img src="asset/img/Logo-Infinitix.png" alt="Infinitix">
+          </div>
+          <div class="partner-logo-slot">
+            <img src="asset/img/Logo-Seagate.png" alt="Seagate">
+          </div>
+          <div class="partner-logo-slot">
+            <img src="asset/img/Logo-winbond.png" alt="winbond">
+          </div>
+          <div class="partner-logo-slot">
+            <img src="asset/img/Logo-swagelok.png" alt="swagelok">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ══════════ LOCATION ══════════ -->
+  <div class="full-rule"></div>
+  <section class="section-wrap" id="about">
+    <div style="position:relative;">
+      <div class="section-num">07</div>
+      <p class="section-eyebrow">Venue</p>
+      <h2 class="section-heading" data-highlight-marker-reveal data-marker-direction="right"
+        data-marker-theme="#c9a96e">Location</h2>
+    </div>
+    <div class="section-rule"></div>
+
+    <div class="location-grid">
+      <div class="location-info">
+        <p class="about-label">Venue</p>
+        <p class="location-name">New York Hilton Midtown</p>
+        <p class="location-address">Concourse G, Concourse Level<br>1335 Avenue of the Americas<br>New York, NY 10019
+        </p>
+        <a class="location-directions"
+          href="https://maps.google.com/?q=New+York+Hilton+Midtown,1335+Avenue+of+the+Americas,New+York,NY+10019"
+          target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          Get Directions
+        </a>
+      </div>
+      <div class="location-map">
+        <iframe
+          src="https://maps.google.com/maps?q=New+York+Hilton+Midtown,+1335+Avenue+of+the+Americas,+New+York,+NY+10019&output=embed&z=15"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" title="New York Hilton Midtown Map">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+
   <!-- ══════════ CONTACT ══════════ -->
   <div class="full-rule"></div>
   <section class="section-wrap" id="contact">
     <div style="position:relative;">
-      <div class="section-num">06</div>
+      <div class="section-num">08</div>
       <p class="section-eyebrow">Get in Touch</p>
       <h2 class="section-heading" data-highlight-marker-reveal data-marker-direction="right"
         data-marker-theme="#c9a96e">Contact Us</h2>
@@ -462,17 +822,21 @@
 
 
   <!-- ══════════ SCRIPTS ══════════ -->
-  <script src="asset/js/main.js"></script>
+  <script defer src="asset/js/main.js"></script>
 
   <!-- JS 動態效果模組 -->
-  <script src="asset/js/ScrollTransition.js"></script>
-  <script src="asset/js/TextAnimation.js"></script>
-  <script src="asset/js/HoverState.js"></script>
-  <script src="asset/js/StickyStep.js"></script>
-  <script src="asset/js/Parallax.js"></script>
-  <script src="asset/js/DrawUnderline.js"></script>
-  <script src="asset/js/NumberOdometer.js"></script>
-  <script src="asset/js/ShutterScroll.js"></script>
+  <script defer src="asset/js/ScrollTransition.js"></script>
+  <script defer src="asset/js/TextAnimation.js"></script>
+  <script defer src="asset/js/HoverState.js"></script>
+  <script defer src="asset/js/StickyStep.js"></script>
+  <script defer src="asset/js/Parallax.js"></script>
+  <script defer src="asset/js/DrawUnderline.js"></script>
+  <script defer src="asset/js/NumberOdometer.js"></script>
+  <script defer src="asset/js/ShutterScroll.js"></script>
+  <script defer src="asset/js/SpeakersSlider.js"></script>
+  <script defer src="asset/js/GiveawayStack.js"></script>
+  <script defer src="asset/js/OverviewHighlights.js"></script>
+  <script defer src="asset/js/PartnersMarquee.js"></script>
 
 </body>
 

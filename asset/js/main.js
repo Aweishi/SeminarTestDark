@@ -8,8 +8,8 @@ if (typeof SplitText !== 'undefined') {
 // ── Mobile menu ──
 (function () {
   const hamburger = document.getElementById('nav-hamburger');
-  const menu      = document.getElementById('mobile-menu');
-  const links     = document.querySelectorAll('.mobile-nav-link');
+  const menu = document.getElementById('mobile-menu');
+  const links = document.querySelectorAll('.mobile-nav-link');
 
   function openMenu() {
     menu.classList.add('is-open');
@@ -51,25 +51,63 @@ if (typeof SplitText !== 'undefined') {
   });
 })();
 
-// ── Page load entrance ──
+// ── Loader + Page load entrance ──
 (function () {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced) return;
+  const loader  = document.getElementById('loader');
 
-  // Initial states — set before anything renders
-  gsap.set('#hero-bg',    { scale: 1.05 });
-  gsap.set('.nav-logo',   { autoAlpha: 0, y: -10 });
-  // Use opacity only (not autoAlpha) — scroll trigger also uses opacity,
-  // mixing autoAlpha + opacity on the same element causes visibility state conflicts on scrub-up
-  gsap.set('#hero-svg',   { opacity: 0, scale: 0.96 });
-  gsap.set('#scroll-hint',{ autoAlpha: 0, y: 10 });
+  // Set hero initial states before loader exits
+  gsap.set('#hero-bg', { scale: 1.08 });
+  gsap.set('.nav-logo', { autoAlpha: 0, y: -10 });
+  gsap.set('.nav-desktop a', { autoAlpha: 0, y: -8 });
+  gsap.set('#hero-svg', { opacity: 0, scale: 0.96 });
+  gsap.set('#scroll-hint', { autoAlpha: 0, y: 10 });
 
-  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-  tl
-    .to('#hero-bg',     { scale: 1, duration: 2.4, ease: 'power2.out' }, 0)
-    .to('.nav-logo',    { autoAlpha: 1, y: 0, duration: 0.7 }, 0.15)
-    .to('#hero-svg',    { opacity: 1, scale: 1, duration: 1.0 }, 0.4)
-    .to('#scroll-hint', { autoAlpha: 1, y: 0, duration: 0.6 }, 1.1);
+  function runHeroEntrance() {
+    gsap.timeline({ defaults: { ease: 'power3.out' } })
+      .to('#hero-bg',       { scale: 1, duration: 2.4, ease: 'power2.out' }, 0)
+      .to('.nav-logo',      { autoAlpha: 1, y: 0, duration: 0.65 }, 0)
+      .to('.nav-desktop a', { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.07 }, 0.1)
+      .to('#hero-svg',      { opacity: 1, scale: 1, duration: 1.0 }, 0.2)
+      .to('#scroll-hint',   { autoAlpha: 1, y: 0, duration: 0.6 }, 1.0);
+  }
+
+  if (reduced) {
+    if (loader) loader.style.display = 'none';
+    gsap.set(['#hero-bg', '.nav-logo', '.nav-desktop a', '#hero-svg', '#scroll-hint'], { clearProps: 'all' });
+    return;
+  }
+
+  if (!loader) { runHeroEntrance(); return; }
+
+  const loaderNumber  = document.getElementById('loader-number');
+  const loaderBar     = document.getElementById('loader-bar');
+  const loaderTrack   = document.getElementById('loader-bar-track');
+  const loaderCounter = document.getElementById('loader-counter');
+
+  const obj = { v: 0 };
+  gsap.to(obj, {
+    v: 100,
+    duration: 1.8,
+    ease: 'power1.inOut',
+    delay: 0.1,
+    onUpdate() {
+      const v = Math.round(obj.v);
+      loaderBar.style.width = v + '%';
+      loaderNumber.textContent = v;
+    },
+    onComplete() {
+      gsap.timeline({
+        onComplete() {
+          loader.style.display = 'none';
+          runHeroEntrance();
+        }
+      })
+        .to(loaderCounter, { opacity: 0, y: -20, duration: 0.4, ease: 'power2.in' }, 0)
+        .to(loaderTrack,   { opacity: 0, duration: 0.25 }, 0)
+        .to(loader,        { yPercent: -100, duration: 0.8, ease: 'expo.inOut' }, 0.3);
+    }
+  });
 })();
 
 // ── Nav scroll state ──
@@ -176,4 +214,70 @@ gsap.from('#contact-grid > div', {
   duration: 0.8,
   ease: 'power3.out',
   scrollTrigger: { trigger: '#contact-grid', start: 'top 82%' }
+});
+
+// ── Section rules draw from left ──
+gsap.utils.toArray('.section-rule').forEach(el => {
+  gsap.from(el, {
+    scaleX: 0, transformOrigin: 'left center', duration: 1.0, ease: 'power3.out',
+    scrollTrigger: { trigger: el, start: 'top 90%' }
+  });
+});
+
+// ── Agenda meta stagger in ──
+gsap.from('.agenda-meta-item', {
+  y: 28, opacity: 0, stagger: 0.1, duration: 0.75, ease: 'power3.out',
+  scrollTrigger: { trigger: '.agenda-meta', start: 'top 82%' }
+});
+
+// ── Partners tiers stagger in ──
+gsap.from('.partners-tier', {
+  y: 44, opacity: 0, stagger: 0.18, duration: 0.85, ease: 'power3.out',
+  scrollTrigger: { trigger: '#partners .section-rule', start: 'top 82%' }
+});
+
+// ── Location entrance ──
+gsap.from('.location-info', {
+  x: -40, opacity: 0, duration: 0.85, ease: 'power3.out',
+  scrollTrigger: { trigger: '.location-grid', start: 'top 82%' }
+});
+gsap.from('.location-map', {
+  x: 40, opacity: 0, duration: 0.85, ease: 'power3.out',
+  scrollTrigger: { trigger: '.location-grid', start: 'top 82%' }
+});
+
+// ── Giveaway intro fade up ──
+gsap.from('.giveaway-intro', {
+  y: 32, opacity: 0, duration: 0.8, ease: 'power3.out',
+  scrollTrigger: { trigger: '.giveaway-intro', start: 'top 88%' }
+});
+
+// Accordion
+function initAccordionCSS() {
+  document.querySelectorAll('[data-accordion-css-init]').forEach((accordion) => {
+    const closeSiblings = accordion.getAttribute('data-accordion-close-siblings') === 'true';
+
+    accordion.addEventListener('click', (event) => {
+      const toggle = event.target.closest('[data-accordion-toggle]');
+      if (!toggle) return; // Exit if the clicked element is not a toggle
+
+      const singleAccordion = toggle.closest('[data-accordion-status]');
+      if (!singleAccordion) return; // Exit if no accordion container is found
+
+      const isActive = singleAccordion.getAttribute('data-accordion-status') === 'active';
+      singleAccordion.setAttribute('data-accordion-status', isActive ? 'not-active' : 'active');
+
+      // When [data-accordion-close-siblings="true"]
+      if (closeSiblings && !isActive) {
+        accordion.querySelectorAll('[data-accordion-status="active"]').forEach((sibling) => {
+          if (sibling !== singleAccordion) sibling.setAttribute('data-accordion-status', 'not-active');
+        });
+      }
+    });
+  });
+}
+
+// Initialize Accordion CSS
+document.addEventListener('DOMContentLoaded', () => {
+  initAccordionCSS();
 });
